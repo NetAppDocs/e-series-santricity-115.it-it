@@ -1,0 +1,77 @@
+---
+permalink: sm-mirroring/requirements-for-using-asynchronous-mirroring.html 
+sidebar: sidebar 
+keywords: requirements, use, asynchronous, mirroring 
+summary: Se si intende utilizzare la funzione di mirroring asincrono, tenere presenti i seguenti requisiti. 
+---
+= Requisiti per l'utilizzo del mirroring asincrono
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si intende utilizzare la funzione di mirroring asincrono, tenere presenti i seguenti requisiti.
+
+
+
+== Gestore unificato SANtricity
+
+Per utilizzare il mirroring asincrono, è necessario impostare le seguenti condizioni:
+
+* Il servizio Web Services Proxy è in esecuzione.
+* SANtricity è in esecuzione sull'host locale tramite una connessione HTTPS.
+* Ciascun controller dell'array primario e secondario deve disporre di una porta di gestione Ethernet configurata e deve essere collegato alla rete.
+* SANtricity Unified Manager mostra certificati SSL validi per lo storage array. È possibile accettare un certificato autofirmato o installare il proprio certificato di sicurezza utilizzando Unified Manager e accedere al menu:Certificate[Certificate Management] (Gestione certificati).
+* Il Gestore di sistema di SANtricity viene avviato da un Gestore unificato.
+* È necessario aver individuato i due array di storage tra i quali si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l'array di storage del volume primario e fare clic su *Avvia* per aprire il Gestore di sistema SANtricity basato su browser.
+
+
+
+
+== Storage array
+
+* È necessario disporre di due array di storage.
+* Ciascun controller dell'array primario e secondario deve disporre di una porta di gestione Ethernet configurata e deve essere collegato alla rete.
+* Ogni array di storage deve avere due controller.
+* Gli array di storage dei volumi primari e secondari possono eseguire diverse versioni del sistema operativo. La versione minima supportata è 7.84.
+* È necessario conoscere la password per gli array di storage locali e remoti.
+* È necessario disporre di capacità libera sufficiente sull'array di storage remoto per creare un volume secondario uguale o superiore al volume primario che si desidera eseguire il mirroring.
+* Gli array di storage locali e remoti devono essere collegati tramite un fabric Fibre Channel o un'interfaccia iSCSI.
+
+
+
+
+== Configurazioni hardware supportate e requisiti di connettività
+
+* Il mirroring asincrono è supportato solo nelle configurazioni hardware a controller doppio.
+* La comunicazione per la funzione di mirroring asincrono è supportata solo sui controller con porte host Fibre Channel (FC) o iSCSI. La funzione utilizza una delle porte host di ciascun controller sia sull'array di storage locale che sull'array di storage remoto.
+* Se gli array di storage sono connessi sia con connessioni FC che con connessioni iSCSI, è possibile eseguire il mirroring di un gruppo di mirror asincrono su FC e di un altro gruppo di mirror asincrono su iSCSI.
+
+
+
+
+== Volumi mirrorati candidati
+
+* Il livello RAID, i parametri di caching e le dimensioni dei segmenti possono essere diversi sui volumi primario e secondario di una coppia di mirroring asincrono.
+* Il volume secondario deve essere grande almeno quanto il volume primario.
+* Un volume può partecipare a una sola relazione di mirroring.
+
+
+
+
+== Capacità riservata
+
+* Un volume a capacità riservata è necessario per un volume primario e per un volume secondario in una coppia mirrorata per la registrazione delle informazioni di scrittura per il ripristino da ripristini del controller e altre interruzioni temporanee.
+* Poiché sia il volume primario che il volume secondario di una coppia mirrorata richiedono ulteriore capacità riservata, è necessario assicurarsi di disporre di capacità libera su entrambi gli array di storage nella relazione mirror.
+
+
+
+
+== Funzione di protezione del disco
+
+* Se si utilizzano dischi sicuri, il volume primario e il volume secondario devono disporre di impostazioni di sicurezza compatibili. Questa restrizione non viene applicata; pertanto, è necessario verificarla da soli.
+* Se si utilizzano dischi sicuri, il volume primario e il volume secondario devono utilizzare lo stesso tipo di disco. Questa restrizione non viene applicata; pertanto, è necessario verificarla da soli.
+* Se si utilizza Data Assurance (da), il volume primario e il volume secondario devono avere le stesse impostazioni da.
+

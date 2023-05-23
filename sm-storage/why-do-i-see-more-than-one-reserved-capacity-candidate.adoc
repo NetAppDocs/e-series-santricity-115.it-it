@@ -1,0 +1,16 @@
+---
+permalink: sm-storage/why-do-i-see-more-than-one-reserved-capacity-candidate.html 
+sidebar: sidebar 
+keywords: reserved capacity, candidate 
+summary: 'Quando System Manager rileva più di un volume in un pool o un gruppo di volumi che soddisfa la percentuale di capacità selezionata per l"oggetto storage, vengono visualizzati più volumi riservati.' 
+---
+= Perché vengono visualizzati più candidati con capacità riservata?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando System Manager rileva più di un volume in un pool o un gruppo di volumi che soddisfa la percentuale di capacità selezionata per l'oggetto storage, vengono visualizzati più volumi riservati.
+
+È possibile scegliere di aggiornare l'elenco dei candidati consigliati modificando la percentuale di spazio su disco fisico che si desidera riservare sul volume di base per le operazioni del servizio di copia. System Manager visualizza i candidati con capacità riservata migliori in base alla selezione effettuata.

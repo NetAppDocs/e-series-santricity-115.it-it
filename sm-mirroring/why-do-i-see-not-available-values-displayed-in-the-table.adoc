@@ -1,0 +1,14 @@
+---
+permalink: sm-mirroring/why-do-i-see-not-available-values-displayed-in-the-table.html 
+sidebar: sidebar 
+keywords: not available, values, displayed, table 
+summary: 'La tabella elenca i valori non disponibili quando i dati presenti nell"array di storage remoto non sono disponibili per la visualizzazione. Per visualizzare i dati dell"array di storage remoto, avviare Gestione di sistema SANtricity da Gestione unificata di SANtricity.' 
+---
+= Perché nella tabella vengono visualizzati i valori non disponibili?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La tabella elenca i valori non disponibili quando i dati presenti nell'array di storage remoto non sono disponibili per la visualizzazione. Per visualizzare i dati dell'array di storage remoto, avviare Gestione di sistema SANtricity da Gestione unificata di SANtricity.

@@ -1,0 +1,20 @@
+---
+permalink: sm-storage/what-is-data-assurance.html 
+sidebar: sidebar 
+keywords: data, assurance 
+summary: 'Data Assurance (da) verifica e corregge gli errori che potrebbero verificarsi quando i dati vengono comunicati tra un host e uno storage array. Le funzionalità DA vengono presentate a livello di pool e gruppo di volumi in System Manager.' 
+---
+= Cos'è Data Assurance?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Data Assurance (da) verifica e corregge gli errori che potrebbero verificarsi quando i dati vengono comunicati tra un host e uno storage array. Le funzionalità DA vengono presentate a livello di pool e gruppo di volumi in System Manager.
+
+La funzione Data Assurance (da) aumenta l'integrità dei dati nell'intero sistema storage. DA consente all'array di storage di verificare la presenza di errori che potrebbero verificarsi quando i dati vengono spostati tra gli host e i dischi. Quando questa funzione è attivata, l'array di storage aggiunge i codici di controllo degli errori (noti anche come CRC (Cyclic Redundancy Checks) a ciascun blocco di dati del volume. Dopo lo spostamento di un blocco di dati, l'array di storage utilizza questi codici CRC per determinare se si sono verificati errori durante la trasmissione. I dati potenzialmente corrotti non vengono scritti su disco né restituiti all'host.
+
+Se si desidera utilizzare la funzione da, selezionare un pool o un gruppo di volumi in grado di supportare da quando si crea un nuovo volume (cercare *Sì* accanto a da nella tabella dei candidati del pool e del gruppo di volumi).
+
+Assicurarsi di assegnare questi volumi abilitati da a un host utilizzando un'interfaccia i/o in grado di supportare da. Le interfacce i/o in grado di da includono Fibre Channel, SAS, iSCSI su TCP/IP e iSER su InfiniBand (iSCSI Extensions per RDMA/IB). DA non è supportato da SRP su InfiniBand.

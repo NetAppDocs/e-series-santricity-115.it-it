@@ -1,0 +1,24 @@
+---
+permalink: sm-mirroring/why-cant-i-access-my-chosen-mirroring-feature.html 
+sidebar: sidebar 
+keywords: access, mirror, feature 
+summary: 'Per utilizzare la funzione di mirroring asincrono o la funzione di mirroring sincrono, è necessario che l"Unified Manager di SANtricity sia in esecuzione sull"host locale tramite una connessione HTTPS per rilevare gli array di storage che supportano il mirroring e avviare l"operazione di mirroring. Da Unified Manager, selezionare l"array di storage da cui si desidera eseguire il mirroring dei dati, quindi fare clic su Avvia per aprire Gestione di sistema di SANtricity.' 
+---
+= Perché non è possibile accedere alla funzione di mirroring scelta?
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per utilizzare la funzione di mirroring asincrono o la funzione di mirroring sincrono, è necessario che l'Unified Manager di SANtricity sia in esecuzione sull'host locale tramite una connessione HTTPS per rilevare gli array di storage che supportano il mirroring e avviare l'operazione di mirroring. Da Unified Manager, selezionare l'array di storage da cui si desidera eseguire il mirroring dei dati, quindi fare clic su Avvia per aprire Gestione di sistema di SANtricity.
+
+Per utilizzare la funzione di mirroring, verificare quanto segue:
+
+* Il servizio Web Services Proxy è in esecuzione.
+* SANtricity è in esecuzione sull'host locale tramite una connessione HTTPS.
+* SANtricity Unified Manager mostra certificati SSL validi per lo storage array. È possibile accettare un certificato autofirmato o installare il proprio certificato di sicurezza utilizzando Unified Manager e accedere al menu:Certificate[Certificate Management] (Gestione certificati).
+* Il Gestore di sistema di SANtricity viene avviato da un Gestore unificato.
+* È necessario aver individuato i due array di storage tra i quali si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l'array di storage del volume primario e fare clic su *Avvia* per aprire il Gestore di sistema SANtricity basato su browser.
+

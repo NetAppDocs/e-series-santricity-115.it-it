@@ -1,0 +1,74 @@
+---
+permalink: sm-mirroring/requirements-for-using-synchronous-mirroring.html 
+sidebar: sidebar 
+keywords: requirements, synchronous, mirroring 
+summary: Se si utilizza la funzione di mirroring sincrono, tenere presenti i seguenti requisiti. 
+---
+= Requisiti per l'utilizzo del mirroring sincrono
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza la funzione di mirroring sincrono, tenere presenti i seguenti requisiti.
+
+
+
+== Gestore unificato SANtricity
+
+Poiché la funzionalità di mirroring sincrono richiede la gestione di più array di storage, è necessario che sia installato il gestore unificato SANtricity basato su browser e che siano stati rilevati i due array di storage tra cui si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l'array di storage del volume primario e fare clic su Launch (Avvia) per aprire il Gestore di sistema SANtricity basato su browser.
+
+
+
+== Storage array
+
+* È necessario disporre di due array di storage.
+* Ogni array di storage deve avere due controller.
+* Gli array di storage dei volumi primari e secondari possono eseguire diverse versioni del sistema operativo. La versione minima supportata è 7.84.
+* È necessario conoscere la password per gli array di storage locali e remoti.
+* È necessario disporre di capacità libera sufficiente sull'array di storage remoto per creare un volume secondario uguale o superiore al volume primario che si desidera eseguire il mirroring.
+* Gli array di storage locali e remoti devono essere collegati tramite un fabric Fibre Channel.
+
+
+
+
+== Configurazione hardware e connessioni supportate
+
+* Il mirroring sincrono è supportato solo nelle configurazioni hardware a controller doppio.
+* La comunicazione per il mirroring sincrono è supportata solo sui controller con porte host Fibre Channel (FC).
+* Il mirroring sincrono utilizza la porta host con il numero più alto su ciascun controller sia sull'array di storage locale che sull'array di storage remoto. La porta host 4 dell'HBA (Controller host Bus Adapter) è in genere riservata alla trasmissione di dati mirror.
+
+
+
+
+== Volumi mirrorati candidati
+
+* Il livello RAID, i parametri di caching e le dimensioni dei segmenti possono essere diversi sui volumi primario e secondario di una coppia di mirroring sincrono.
+* I volumi primari e secondari di una coppia sincrona con mirroring devono essere volumi standard. Non possono essere volumi thin o volumi snapshot.
+* Il volume secondario deve essere grande almeno quanto il volume primario.
+* Solo il volume primario può avere snapshot associati e/o essere il volume di origine o di destinazione in un'operazione di copia del volume.
+* Un volume può partecipare a una sola relazione di mirroring.
+
+
+
+
+== Capacità riservata
+
+* La capacità riservata è necessaria per un volume primario e per un volume secondario per la registrazione delle informazioni di scrittura per il ripristino da ripristini del controller e altre interruzioni temporanee.
+* I volumi di capacità riservati vengono creati automaticamente quando viene attivato il mirroring sincrono. Poiché sia il volume primario che il volume secondario di una coppia mirrorata richiedono capacità riservata, è necessario assicurarsi di disporre di una capacità libera sufficiente su entrambi gli array di storage che partecipano alla relazione di mirroring sincrono.
+
+
+
+
+== Funzione di protezione del disco
+
+* Se si utilizzano dischi sicuri, il volume primario e il volume secondario devono disporre di impostazioni di sicurezza compatibili. Questa restrizione non viene applicata; pertanto, è necessario verificarla da soli.
+* Se si utilizzano dischi sicuri, il volume primario e il volume secondario devono utilizzare lo stesso tipo di disco. Questa restrizione non viene applicata; pertanto, è necessario verificarla da soli.
++
+** Se il volume primario utilizza dischi FDE (Full Disk Encryption), il volume secondario deve utilizzare dischi FDE.
+** Se il volume primario utilizza dischi convalidati FIPS (Federal Information Processing Standards 140-2), il volume secondario deve utilizzare dischi validati FIPS 140-2.
+
+
+* Se si utilizza Data Assurance (da), il volume primario e il volume secondario devono avere le stesse impostazioni da.
+

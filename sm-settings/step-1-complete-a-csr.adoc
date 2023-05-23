@@ -1,0 +1,69 @@
+---
+permalink: sm-settings/step-1-complete-a-csr.html 
+sidebar: sidebar 
+keywords: complete, ca certificate, signing, request, csr, controllers 
+summary: 'Per ricevere un certificato di autorità di certificazione (CA) per i controller dell"array di storage, è necessario innanzitutto generare un file CSR (Certificate Signing Request) per ciascun controller dell"array di storage.' 
+---
+= Completare una richiesta di firma del certificato CA (CSR) per i controller
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per ricevere un certificato di autorità di certificazione (CA) per i controller dell'array di storage, è necessario innanzitutto generare un file CSR (Certificate Signing Request) per ciascun controller dell'array di storage.
+
+.Prima di iniziare
+* È necessario effettuare l'accesso con un profilo utente che includa le autorizzazioni di amministratore di sicurezza. In caso contrario, le funzioni del certificato non vengono visualizzate.
+
+
+.A proposito di questa attività
+Questa attività descrive come generare i file .CSR (richieste di firma del certificato) inviati a una CA per ricevere certificati di gestione firmati per i controller. È necessario fornire informazioni sull'organizzazione, oltre all'indirizzo IP o al nome DNS dei controller. Durante questa attività, viene generato un file .CSR se nell'array di storage è presente un solo controller e due file .CSR se sono presenti due controller.
+
+.Fasi
+. Selezionare il menu:Impostazioni[certificati].
+. Dalla scheda *Array Management* (Gestione array), selezionare *complete CSR* (completa CSR).
++
+[NOTE]
+====
+Se viene visualizzata una finestra di dialogo che richiede di accettare un certificato autofirmato per il secondo controller, fare clic su *Accetta certificato autofirmato* per continuare.
+
+====
+. Inserire le seguenti informazioni, quindi fare clic su *Avanti*:
++
+** *Organizzazione* -- il nome completo e legale della tua azienda o organizzazione. Includere i suffissi, ad esempio Inc. O Corp.
+** *Unità organizzativa (opzionale)* -- la divisione dell'organizzazione che gestisce il certificato.
+** *Città/Località* -- la città in cui si trova il tuo storage array o il tuo business.
+** *Stato/Regione (opzionale)* -- Stato o regione in cui si trova lo storage array o l'azienda.
+** *Codice ISO del Paese* -- Codice ISO (International Organization for Standardization) a due cifre del Paese, ad esempio USA.
+
+
++
+[CAUTION]
+====
+Alcuni campi potrebbero essere precompilati con le informazioni appropriate, ad esempio l'indirizzo IP del controller. Non modificare i valori prepopolati a meno che non si sia certi che siano errati. Ad esempio, se non è stata ancora completata una CSR, l'indirizzo IP del controller viene impostato su "`localhost`". In questo caso, è necessario modificare "`localhost`" con il nome DNS o l'indirizzo IP del controller.
+
+====
+. Verificare o inserire le seguenti informazioni sul controller A nell'array di storage:
++
+** *Controller A common name* -- per impostazione predefinita viene visualizzato l'indirizzo IP o il nome DNS del controller A. Assicurarsi che l'indirizzo sia corretto; deve corrispondere esattamente a quello immesso per accedere a System Manager nel browser.
+** *Controller A alternate IP addresses* -- se il nome comune è un indirizzo IP, è possibile inserire eventuali indirizzi IP o alias aggiuntivi per il controller A. Per più voci, utilizzare un formato delimitato da virgole.
+** *Controller A alternate DNS Names* -- se il nome comune è un nome DNS, inserire eventuali nomi DNS aggiuntivi per il controller A. Per più voci, utilizzare un formato delimitato da virgole. Se non sono presenti nomi DNS alternativi, ma è stato immesso un nome DNS nel primo campo, copiarlo qui. Se lo storage array dispone di un solo controller, il pulsante *Finish* è disponibile. Se lo storage array ha due controller, il pulsante *Next* (Avanti) è disponibile.
+
+
++
+[NOTE]
+====
+Non fare clic sul collegamento *Ignora questo passaggio* quando si crea una richiesta CSR. Questo collegamento viene fornito in situazioni di ripristino degli errori. In rari casi, una richiesta CSR potrebbe non riuscire su un controller, ma non sull'altro. Questo collegamento consente di saltare la fase per la creazione di una richiesta CSR sul controller A, se già definita, e passare alla fase successiva per la creazione di una richiesta CSR sul controller B.
+
+====
+. Se è presente un solo controller, fare clic su *fine*. Se sono presenti due controller, fare clic su *Avanti* per immettere le informazioni relative al controller B (come sopra), quindi fare clic su *fine*.
++
+Per un singolo controller, viene scaricato un file .CSR nel sistema locale. Per i controller doppi, vengono scaricati due file .CSR. La posizione della cartella del download dipende dal browser in uso.
+
+. Inviare i file .CSR alla CA.
+
+
+.Al termine
+Quando si ricevono i certificati digitali, importare i file di certificato appropriati inviati dalla CA.

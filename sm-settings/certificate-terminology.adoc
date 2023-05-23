@@ -1,0 +1,81 @@
+---
+permalink: sm-settings/certificate-terminology.html 
+sidebar: sidebar 
+keywords: certificate, terminology 
+summary: Scopri in che modo i termini del certificato si applicano al tuo array di storage. 
+---
+= Terminologia del certificato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Scopri in che modo i termini del certificato si applicano al tuo array di storage.
+
+|===
+| Termine | Descrizione 
+
+
+ a| 
+CIRCA
+ a| 
+Un'autorità di certificazione (CA) è un'entità attendibile che emette documenti elettronici, denominati certificati digitali, per la sicurezza di Internet. Questi certificati identificano i proprietari dei siti Web, consentendo connessioni sicure tra client e server.
+
+
+
+ a| 
+CSR
+ a| 
+Una richiesta di firma del certificato (CSR) è un messaggio inviato da un richiedente a un'autorità di certificazione (CA). La CSR convalida le informazioni richieste dalla CA per il rilascio di un certificato.
+
+
+
+ a| 
+Certificato
+ a| 
+Un certificato identifica il proprietario di un sito per motivi di sicurezza, impedendo agli autori degli attacchi di impersonare il sito. Il certificato contiene informazioni sul proprietario del sito e l'identità dell'entità attendibile che certifica (firma) queste informazioni.
+
+
+
+ a| 
+Certificato del client
+ a| 
+Per la gestione delle chiavi di sicurezza, un certificato client convalida i controller dello storage array, in modo che il server di gestione delle chiavi possa fidarsi dei propri indirizzi IP.
+
+
+
+ a| 
+Certificato del server di gestione delle chiavi
+ a| 
+Per la gestione delle chiavi di sicurezza, un certificato del server di gestione delle chiavi convalida il server, in modo che lo storage array possa fidarsi del proprio indirizzo IP.
+
+
+
+ a| 
+Certificato di gestione
+ a| 
+Un certificato di gestione viene approvato da un'autorità di certificazione (CA) e consente un accesso sicuro all'applicazione Web. Definito anche "certificato firmato".
+
+
+
+ a| 
+Server OCSP
+ a| 
+Il server OCSP (Online Certificate Status Protocol) determina se l'autorità di certificazione (CA) ha revocato i certificati prima della data di scadenza pianificata, quindi impedisce all'utente di accedere a un server se il certificato viene revocato.
+
+
+
+ a| 
+Certificato autofirmato
+ a| 
+Un certificato autofirmato è precaricato sul controller. Se la connessione al sito è autofirmata, viene visualizzato un messaggio di avviso prima di procedere con l'applicazione Web.
+
+
+
+ a| 
+Certificato attendibile
+ a| 
+Un certificato attendibile di un'autorità di certificazione (CA) è un certificato noto nella parte superiore della gerarchia di certificati. Definito anche "certificato root".
+
+|===

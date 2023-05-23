@@ -1,0 +1,102 @@
+---
+permalink: sm-mirroring/considerations-for-setting-up-asynchronous-mirroring.html 
+sidebar: sidebar 
+keywords: considerations, setting up, asynchronous, mirror 
+summary: Per garantire una configurazione e una configurazione ottimali, tenere presente alcune considerazioni chiave come parte della pianificazione. 
+---
+= Considerazioni per la configurazione del mirroring asincrono
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per garantire una configurazione e una configurazione ottimali, tenere presente alcune considerazioni chiave come parte della pianificazione.
+
+
+
+== Avviare Gestione unificata di SANtricity
+
+* Ciascun controller dell'array primario e secondario deve disporre di una porta di gestione Ethernet configurata e deve essere collegato alla rete.
+* Il mirroring asincrono viene configurato aprendo Gestione unificata di SANtricity. Qualsiasi relazione di mirroring richiede che i sistemi storage locali e remoti siano rilevati da ed elencati in Gestione unificata di SANtricity.
+* È necessario che sia installato il gestore unificato SANtricity basato su browser e che siano stati rilevati i due array di storage tra i quali si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l'array di storage del volume primario e fare clic su Launch (Avvia) per aprire il Gestore di sistema SANtricity basato su browser.
+
+
+
+
+== Attivazione in corso
+
+Prima di utilizzare il mirroring asincrono, è necessario attivarlo su ciascun array di storage che partecipa alle operazioni di mirroring. L'attivazione può essere eseguita tramite l'interfaccia CLI, REST API o l'interfaccia grafica utente (GUI) di gestione.
+
+* Per i sistemi gestiti da Gestore di sistema SANtricity (E2800, E5700, EF570), non è necessaria alcuna fase di attivazione separata; l'attivazione avviene dietro le quinte mentre sono in corso la configurazione di gruppi/coppie di mirror.
+* Per i sistemi gestiti da Gestore storage SANtricity (E2700, E5600, EF560), il mirroring asincrono viene attivato utilizzando l'interfaccia grafica del sistema legacy che non è gestito da Gestore di sistema SANtricity. Se si utilizza iSCSI per il mirroring asincrono, la fase di attivazione non è necessaria.
+
+
+
+
+== Certificati di servizi Web e browser consigliati
+
+* *Certificati attendibili*
++
+Per il mirroring dei sistemi gestiti da Gestore di sistema di SANtricity, si consiglia di importare i certificati attendibili per i servizi Web in Gestore unificato di SANtricity che consentono ai sistemi di storage di autenticarsi con il server Web. Di seguito sono riportati i passaggi di SANtricity Unified Manager:
+
++
+.. Generare una richiesta di firma del certificato (CSR) per il computer su cui è installato SANtricity Manager.
+.. Inviare la CSR a un'autorità di certificazione (CA).
+.. Quando la CA restituisce i certificati firmati, importarli in Unified Manager.
+
+
+* *Certificati autofirmati*
++
+È possibile utilizzare anche certificati autofirmati. Se l'amministratore tenta di configurare il mirroring senza importare certificati firmati, in Gestione sistema di SANtricity viene visualizzata una finestra di dialogo di errore che consente all'amministratore di accettare il certificato autofirmato. In questo caso, si consiglia di utilizzare l'ultima versione di Chrome o Firefox come browser.
+
++
+È possibile accettare un certificato autofirmato o installare il proprio certificato di sicurezza utilizzando Unified Manager e accedere al menu:Certificate[Certificate Management] (Gestione certificati).
+
+
+
+
+
+== Connessioni supportate
+
+Il mirroring asincrono può utilizzare connessioni FC o iSCSI o entrambe per la comunicazione tra sistemi storage locali e remoti. Al momento della creazione di un gruppo di coerenza mirror (noto anche come gruppo di mirror asincrono), l'amministratore può selezionare FC o iSCSI per quel gruppo, se entrambi sono connessi all'array di storage remoto. Non esiste un failover da un tipo di canale all'altro.
+
+Il mirroring asincrono utilizza le porte i/o lato host dell'array di storage per trasferire i dati mirrorati dal lato primario al lato secondario.
+
+* *Mirroring tramite interfaccia Fibre Channel (FC)*
++
+Ogni controller dello storage array dedica la porta host FC con il numero più alto alle operazioni di mirroring.
+
++
+Se il controller dispone di porte FC di base e porte FC HIC (host Interface Card), la porta con il numero più alto si trova su un HIC. Tutti gli host connessi alla porta dedicata vengono disconnessi e non vengono accettate richieste di accesso all'host. Le richieste di i/o su questa porta vengono accettate solo dai controller che partecipano alle operazioni di mirroring.
+
++
+Le porte di mirroring dedicate devono essere collegate a un ambiente fabric FC che supporti le interfacce del servizio di directory e del servizio di nomi. In particolare, FC-al e point-to-point non sono supportati come opzioni di connettività tra i controller che partecipano a relazioni mirror.
+
+* *Mirroring tramite interfaccia iSCSI*
++
+A differenza di FC, iSCSI non richiede una porta dedicata. Quando si utilizza il mirroring asincrono in ambienti iSCSI, non è necessario dedicare alcuna delle porte iSCSI front-end dello storage array per l'utilizzo con il mirroring asincrono; tali porte sono condivise sia per il traffico mirror asincrono che per le connessioni i/o host-to-array.
+
++
+Il controller mantiene un elenco di sistemi storage remoti con i quali l'iSCSI Initiator tenta di stabilire una sessione. La prima porta che stabilisce correttamente una connessione iSCSI viene utilizzata per tutte le comunicazioni successive con l'array di storage remoto. Se la comunicazione non riesce, viene tentata una nuova sessione utilizzando tutte le porte disponibili.
+
++
+Le porte iSCSI sono configurate a livello di array porta per porta. La comunicazione tra controller per la messaggistica di configurazione e il trasferimento dei dati utilizza le impostazioni globali, incluse le impostazioni per:
+
++
+** VLAN: Per comunicare, i sistemi locali e remoti devono avere la stessa impostazione VLAN
+** Porta di ascolto iSCSI
+** Frame jumbo
+** Priorità Ethernet
+
+
++
+[NOTE]
+====
+La comunicazione tra controller iSCSI deve utilizzare una porta di connessione host e non la porta Ethernet di gestione.
+
+====
+
+
+Il mirroring asincrono utilizza le porte i/o lato host dell'array di storage per trasferire i dati mirrorati dal lato primario al lato secondario. Poiché il mirroring asincrono è destinato a reti a latenza più elevata, a costi inferiori, le connessioni iSCSI (e quindi basate su TCP/IP) sono la soluzione ideale per l'IT. Quando si utilizza il mirroring asincrono in ambienti iSCSI, non è necessario dedicare alcuna delle porte iSCSI front-end dell'array per l'utilizzo con il mirroring asincrono; tali porte sono condivise sia per il traffico mirror asincrono che per le connessioni i/o host-to-array

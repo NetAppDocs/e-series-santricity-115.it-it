@@ -1,0 +1,88 @@
+---
+permalink: sm-storage/change-configuration-settings-for-a-volume-group.html 
+sidebar: sidebar 
+keywords: change, raid level, volume group 
+summary: 'È possibile modificare il livello RAID di un gruppo di volumi per soddisfare le esigenze di performance delle applicazioni che accedono al gruppo di volumi. Questa operazione modifica il livello RAID di un gruppo di volumi senza influire sull"i/o dei dati' 
+---
+= Modificare il livello RAID per un gruppo di volumi
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare il livello RAID di un gruppo di volumi per soddisfare le esigenze di performance delle applicazioni che accedono al gruppo di volumi. Questa operazione modifica il livello RAID di un gruppo di volumi senza influire sull'i/o dei dati
+
+.Prima di iniziare
+* Il gruppo di volumi deve trovarsi in uno stato ottimale.
+* È necessario disporre di capacità sufficiente nel gruppo di volumi per la conversione al nuovo livello RAID.
+* Non è possibile modificare il livello RAID di un pool. System Manager configura automaticamente i pool come RAID 6.
+
+
+.A proposito di questa attività
+Non è possibile annullare questa operazione dopo l'inizio. I dati rimangono disponibili durante questa operazione.
+
+Ulteriori informazioni sui livelli RAID
+
+[cols="2*"]
+|===
+| Livello RAID | Descrizione 
+
+
+ a| 
+Striping RAID 0
+ a| 
+Offre performance elevate, ma non fornisce alcuna ridondanza dei dati. Se un singolo disco si guasta nel gruppo di volumi, tutti i volumi associati si guastano e tutti i dati vengono persi.
+
+Un gruppo RAID di striping combina due o più dischi in un'unica grande unità logica.
+
+
+
+ a| 
+Mirroring RAID 1
+ a| 
+Offre performance elevate e la migliore disponibilità dei dati ed è adatto per la memorizzazione di dati sensibili a livello aziendale o personale.
+
+Protegge i dati eseguendo automaticamente il mirroring del contenuto di un disco nel secondo disco della coppia mirrorata. Fornisce protezione in caso di guasto di un singolo disco.
+
+
+
+ a| 
+Striping/mirroring RAID 10
+ a| 
+Offre una combinazione di RAID 0 (striping) e RAID 1 (mirroring) e si ottiene selezionando quattro o più dischi.
+
+RAID 10 è adatto per applicazioni di transazioni di volumi elevati, come un database, che richiedono performance elevate e tolleranza agli errori.
+
+
+
+ a| 
+RAID 5
+ a| 
+Ideale per ambienti multiutente (come storage di database o file system) in cui le dimensioni i/o tipiche sono ridotte e l'attività di lettura è molto elevata.
+
+
+
+ a| 
+RAID 6
+ a| 
+Ideale per gli ambienti che richiedono una protezione di ridondanza oltre il RAID 5, ma che non richiedono elevate prestazioni di scrittura.
+
+|===
+RAID 3 può essere assegnato solo ai gruppi di volumi utilizzando l'interfaccia della riga di comando (CLI).
+
+.Fasi
+. Selezionare *menu:Storage[Pools & Volume Groups]*.
+. Selezionare il gruppo di volumi che si desidera modificare, quindi fare clic su *Visualizza/Modifica impostazioni*.
++
+Viene visualizzata la finestra di dialogo Volume Group Settings.
+
+. Selezionare il livello RAID dall'elenco a discesa, quindi fare clic su *Save* (Salva).
++
+Viene visualizzata una finestra di dialogo di conferma in caso di riduzione della capacità, perdita della ridondanza del volume o perdita della protezione di shelf/cassetto a seguito della modifica del livello RAID. Selezionare *Sì* per continuare, altrimenti fare clic su *No*.
+
+
+
+.Risultati
+Quando si modifica il livello RAID per un gruppo di volumi, System Manager modifica i livelli RAID di ogni volume che comprende il gruppo di volumi. Le prestazioni potrebbero essere leggermente compromesse durante l'operazione.

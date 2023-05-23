@@ -1,0 +1,31 @@
+---
+permalink: sm-mirroring/synchronous-mirroring-activation.html 
+sidebar: sidebar 
+keywords: synchronous, mirror, activation 
+summary: La funzione di mirroring sincrono viene attivata automaticamente quando viene creata la prima coppia di mirroring sincrono su un array di storage. 
+---
+= Attivazione del mirroring sincrono
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La funzione di mirroring sincrono viene attivata automaticamente quando viene creata la prima coppia di mirroring sincrono su un array di storage.
+
+Quando la funzione di mirroring sincrono è attivata, System Manager esegue le seguenti operazioni:
+
+* Riserva la porta con il numero più alto dell'HIC del controller per la trasmissione dei dati mirror.
++
+Le richieste di i/o ricevute su questa porta vengono accettate solo dal proprietario del controller preferito remoto del volume secondario nella coppia mirrorata. (Sono consentite prenotazioni sul volume primario).
+
+* Crea due volumi di capacità riservata, uno per ciascun controller, che vengono utilizzati per la registrazione delle informazioni di scrittura per il ripristino da ripristini del controller e altre interruzioni temporanee.
++
+La capacità di ciascun volume è di 128 MiB. Tuttavia, se i volumi sono collocati in un pool, 4 GiB saranno riservati per ogni volume.
+
+
+
+Con la funzione di mirroring sincrono, esistono limiti al numero di volumi supportati in un determinato array di storage. Prima di attivare il mirroring sincrono, assicurarsi che il numero di volumi configurati sull'array di storage sia inferiore al limite supportato. Quando il mirroring sincrono è attivo, i due volumi di capacità riservata creati vengono conteggiati rispetto al limite del volume.
+
+Per disattivare il mirroring sincrono in un secondo momento, andare al menu:Storage[Synchronous Mirroring > Uncommon Tasks > Deactivate].

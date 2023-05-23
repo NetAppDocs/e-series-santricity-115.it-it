@@ -1,0 +1,21 @@
+---
+permalink: sm-mirroring/asynchronous-mirroring-why-dont-i-see-all-my-volumes.html 
+sidebar: sidebar 
+keywords: asynchronous, mirror, all my volumes 
+summary: 'Quando si seleziona un volume primario per una coppia mirrorata, System Manager visualizza un elenco di tutti i volumi idonei per tale coppia mirrorata. I volumi non idonei all"utilizzo non vengono visualizzati nell"elenco.' 
+---
+= Mirroring asincrono - perché non vedo tutti i volumi?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si seleziona un volume primario per una coppia mirrorata, System Manager visualizza un elenco di tutti i volumi idonei per tale coppia mirrorata. I volumi non idonei all'utilizzo non vengono visualizzati nell'elenco.
+
+I volumi potrebbero non essere idonei per uno dei seguenti motivi:
+
+* Il volume non è un volume standard, ad esempio un volume snapshot.
+* Il volume non è ottimale.
+* Il volume sta già partecipando a una relazione di mirroring.
+

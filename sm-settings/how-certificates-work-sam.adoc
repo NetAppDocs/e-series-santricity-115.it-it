@@ -1,0 +1,28 @@
+---
+permalink: sm-settings/how-certificates-work-sam.html 
+sidebar: sidebar 
+keywords: ca certificates, csr files 
+summary: 'Un"autorità di certificazione (CA) è un"entità attendibile che emette documenti elettronici, denominati certificati digitali, per la sicurezza di Internet. Questi certificati identificano i proprietari dei siti Web, consentendo connessioni sicure tra client e server.' 
+---
+= Come funzionano i certificati CA
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un'autorità di certificazione (CA) è un'entità attendibile che emette documenti elettronici, denominati certificati digitali, per la sicurezza di Internet. Questi certificati identificano i proprietari dei siti Web, consentendo connessioni sicure tra client e server.
+
+Quando si apre un browser e si tenta di connettersi a System Manager tramite la porta di gestione del controller, il browser tenta di verificare che il controller dell'array di storage sia un'origine attendibile. Se il browser non riesce a individuare un certificato digitale per il controller, avvisa l'utente che il certificato non è firmato da un'autorità riconosciuta e chiede se si desidera continuare. Se non si desidera più visualizzare questo avviso, è necessario ottenere un certificato digitale firmato da una CA.
+
+Se si utilizza un server di gestione delle chiavi esterno con la funzione Drive Security, è anche possibile creare certificati per l'autenticazione tra il server e i controller oppure accettare i certificati autofirmati dall'array di storage.
+
+Per utilizzare un certificato digitale di un'autorità fidata, è necessario attenersi alla seguente procedura:
+
+. Accedere al menu:Impostazioni[certificati]. L'accesso utente deve includere le autorizzazioni Security Admin; in caso contrario, *Certificates* non viene visualizzato nella pagina.
+. Creare una CSR (Certificate Signing Request) per ciascun controller o per un server di gestione delle chiavi.
+. Inviare i file .CSR a una CA, quindi attendere l'invio dei certificati.
+. Importare il certificato attendibile (intermedio e root) dalla CA. Questi certificati stabiliscono un punto di trust per una gerarchia CA.
+. Importare i certificati di gestione firmati per ciascun controller o server di gestione delle chiavi.
+

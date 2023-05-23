@@ -1,0 +1,23 @@
+---
+permalink: sm-mirroring/what-do-i-need-to-know-before-creating-a-mirror-consistency-group.html 
+sidebar: sidebar 
+keywords: creating,  mirror, consistency group 
+summary: 'È necessario che sia installato il gestore unificato SANtricity basato su browser e che siano stati rilevati i due array di storage tra i quali si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l"array di storage del volume primario e fare clic su Launch (Avvia) per aprire il Gestore di sistema SANtricity basato su browser.' 
+---
+= Cosa è necessario sapere prima di creare un gruppo di coerenza mirror?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario che sia installato il gestore unificato SANtricity basato su browser e che siano stati rilevati i due array di storage tra i quali si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l'array di storage del volume primario e fare clic su Launch (Avvia) per aprire il Gestore di sistema SANtricity basato su browser.
+
+Inoltre, assicurarsi di quanto segue:
+
+* È necessario disporre di capacità libera sufficiente sull'array di storage remoto per creare un volume secondario uguale o superiore al volume primario che si desidera eseguire il mirroring.
+* È necessario disporre di due array di storage.
+* Ogni array di storage deve avere due controller.
+* È necessario conoscere la password per gli array di storage locali e remoti.
+* Gli array di storage locali e remoti devono essere collegati tramite un fabric Fibre Channel o un'interfaccia iSCSI.
+

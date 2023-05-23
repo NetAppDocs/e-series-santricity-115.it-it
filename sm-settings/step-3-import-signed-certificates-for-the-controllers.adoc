@@ -1,0 +1,44 @@
+---
+permalink: sm-settings/step-3-import-signed-certificates-for-the-controllers.html 
+sidebar: sidebar 
+keywords: import, management, certificate, controllers 
+summary: 'Dopo aver importato la catena di certificati attendibili, viene importato un file di certificati di gestione (firmato) per ciascun controller nell"array di storage.' 
+---
+= Importare un certificato di gestione per i controller
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver importato la catena di certificati attendibili, viene importato un file di certificati di gestione (firmato) per ciascun controller nell'array di storage.
+
+.Prima di iniziare
+* È necessario effettuare l'accesso con un profilo utente che includa le autorizzazioni di amministratore di sicurezza. In caso contrario, le funzioni del certificato non vengono visualizzate.
+* I certificati attendibili sono stati importati.
+* La CA ha restituito un file di certificato di gestione per ciascun controller.
+* I file dei certificati di gestione sono disponibili sul sistema locale.
+
+
+.A proposito di questa attività
+Questa attività descrive come caricare i file dei certificati di gestione per l'autenticazione del controller.
+
+.Fasi
+. Selezionare il menu:Impostazioni[certificati].
+. Dalla scheda *Array Management* (Gestione array), selezionare *Import* (Importa).
++
+Viene visualizzata una finestra di dialogo per l'importazione dei file di certificato.
+
+. Fare clic su *Browse* (Sfoglia) per selezionare il file per il controller A. Se sono presenti due controller, fare clic sul secondo pulsante *Sfoglia* per selezionare il file per il controller B.
++
+I nomi dei file vengono visualizzati nella finestra di dialogo.
+
+. Fare clic su *Importa*.
++
+I file vengono caricati e validati.
+
+
+
+.Risultati
+La sessione viene terminata automaticamente. È necessario effettuare nuovamente l'accesso affinché i certificati abbiano effetto. Quando si effettua nuovamente l'accesso, per la sessione viene utilizzato il nuovo certificato firmato dalla CA.

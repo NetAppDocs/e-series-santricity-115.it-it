@@ -1,0 +1,16 @@
+---
+permalink: sm-mirroring/workflow-for-mirroring-a-volume-synchronously.html 
+sidebar: sidebar 
+keywords: workflow, mirror, volume, synchronously 
+summary: In Gestore di sistema di SANtricity, è possibile eseguire il mirroring sincrono di un volume seguendo questa procedura. 
+---
+= Workflow per il mirroring sincrono di un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In Gestore di sistema di SANtricity, è possibile eseguire il mirroring sincrono di un volume seguendo questa procedura.
+
+image::../media/sam1130-flw-sync-create.gif[sam1130 flw sync create]

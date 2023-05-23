@@ -1,0 +1,45 @@
+---
+permalink: sm-settings/step-1-complete-and-submit-csr-for-authentication-with-a-key-server.html 
+sidebar: sidebar 
+keywords: complete, ca certificate, signing, request, csr, key server 
+summary: 'Per ricevere un certificato di autorità di certificazione (CA) per un server di gestione delle chiavi, è necessario innanzitutto generare un file CSR (Certificate Signing Request).' 
+---
+= Completare la richiesta di firma del certificato CA (CSR) per un server delle chiavi
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per ricevere un certificato di autorità di certificazione (CA) per un server di gestione delle chiavi, è necessario innanzitutto generare un file CSR (Certificate Signing Request).
+
+.Prima di iniziare
+* È necessario effettuare l'accesso con un profilo utente che includa le autorizzazioni di amministratore di sicurezza. In caso contrario, le funzioni del certificato non vengono visualizzate.
+
+
+.A proposito di questa attività
+Questa attività descrive come generare i file .CSR (richieste di firma del certificato) inviati a una CA per ricevere i certificati firmati per un server di gestione delle chiavi. Durante questa attività, è necessario fornire informazioni sull'organizzazione.
+
+.Fasi
+. Selezionare il menu:Impostazioni[certificati].
+. Dalla scheda *Key Management* (Gestione chiavi), selezionare *complete CSR* (completa CSR).
+. Inserire le seguenti informazioni:
++
+** *Nome comune* -- un nome che identifica questa CSR, ad esempio il nome dell'array di storage, che verrà visualizzato nei file di certificato.
+** *Organizzazione* -- il nome completo e legale della tua azienda o organizzazione. Includere i suffissi, ad esempio Inc. O Corp.
+** *Unità organizzativa (opzionale)* -- la divisione dell'organizzazione che gestisce il certificato.
+** *Città/Località* -- la città o la località in cui si trova l'organizzazione.
+** *Stato/Regione (opzionale)* -- Stato o regione in cui si trova l'organizzazione.
+** *Codice ISO Paese* -- Codice ISO (International Organization for Standardization) a due cifre, ad esempio USA, in cui si trova l'organizzazione.
+
+
+. Fare clic su *Download*.
++
+Un file .CSR viene salvato nel sistema locale.
+
+. Inviare i file .CSR alla CA.
+
+
+.Al termine
+Quando si ottengono i certificati client e server dal server di gestione delle chiavi, importarli per l'autenticazione con i controller degli array di storage.

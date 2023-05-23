@@ -1,0 +1,22 @@
+---
+permalink: sm-mirroring/synchronous-mirroring-what-do-i-need-to-know-before-creating-a-mirrored-pair.html 
+sidebar: sidebar 
+keywords: synchronous, mirroring, create, mirrored path 
+summary: 'Prima di creare una coppia mirrorata, assicurarsi che l"ambiente soddisfi le seguenti linee guida.' 
+---
+= Mirroring sincrono - cosa occorre sapere prima di creare una coppia mirrorata?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di creare una coppia mirrorata, assicurarsi che l'ambiente soddisfi le seguenti linee guida.
+
+* È necessario disporre di capacità libera sufficiente sull'array di storage remoto per creare un volume secondario uguale o superiore al volume primario che si desidera eseguire il mirroring.
+* È necessario disporre di due array di storage.
+* Ogni array di storage deve avere due controller.
+* È necessario conoscere la password per gli array di storage locali e remoti.
+* Gli array di storage locali e remoti devono essere collegati tramite un fabric Fibre Channel.
+* È necessario aver individuato i due array di storage tra i quali si desidera eseguire il mirroring dei dati. Quindi, da Unified Manager, selezionare l'array di storage del volume primario e fare clic su Launch (Avvia) per aprire il Gestore di sistema SANtricity basato su browser.
+

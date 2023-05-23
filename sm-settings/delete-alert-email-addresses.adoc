@@ -1,0 +1,32 @@
+---
+permalink: sm-settings/delete-alert-email-addresses.html 
+sidebar: sidebar 
+keywords: delete, email, addresses, alerts 
+summary: È possibile eliminare gli indirizzi e-mail dei destinatari che ricevono gli avvisi e-mail. 
+---
+= Eliminare gli indirizzi e-mail per gli avvisi
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eliminare gli indirizzi e-mail dei destinatari che ricevono gli avvisi e-mail.
+
+.Fasi
+. Selezionare menu:Impostazioni[Avvisi].
+. Selezionare la scheda *Email*.
+. Nella tabella *Indirizzo e-mail*, selezionare l'indirizzo e-mail che si desidera eliminare.
++
+Il pulsante *Delete* (Elimina) in alto a destra della tabella diventa disponibile per la selezione.
+
+. Fare clic su *Delete* (Elimina).
++
+Viene visualizzata la finestra di dialogo *Conferma eliminazione email*.
+
+. Confermare l'operazione, quindi fare clic su *Delete* (Elimina).
+
+
+.Risultato
+Gli avvisi non vengono più inviati a questo indirizzo e-mail.

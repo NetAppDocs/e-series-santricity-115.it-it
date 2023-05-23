@@ -1,0 +1,28 @@
+---
+permalink: sm-settings/enable-or-disable-legacy-management-interface.html 
+sidebar: sidebar 
+keywords: enable, disable, legacy, management, interface 
+summary: 'È possibile attivare o disattivare l"interfaccia di gestione legacy (Symbol), un metodo di comunicazione tra lo storage array e il client di gestione. Per impostazione predefinita, l"interfaccia di gestione legacy è attiva. Se la si disattiva, l"array di storage e il client di gestione utilizzeranno un metodo di comunicazione più sicuro (API REST su https); tuttavia, alcuni strumenti e attività potrebbero risentirne se la funzione è disattivata.' 
+---
+= Attivare o disattivare l'interfaccia di gestione legacy
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile attivare o disattivare l'interfaccia di gestione legacy (Symbol), un metodo di comunicazione tra lo storage array e il client di gestione. Per impostazione predefinita, l'interfaccia di gestione legacy è attiva. Se la si disattiva, l'array di storage e il client di gestione utilizzeranno un metodo di comunicazione più sicuro (API REST su https); tuttavia, alcuni strumenti e attività potrebbero risentirne se la funzione è disattivata.
+
+.A proposito di questa attività
+L'impostazione influisce sulle operazioni come segue:
+
+* *On* (impostazione predefinita) -- impostazione richiesta per il mirroring, per i comandi CLI che funzionano solo sugli storage array E5700 e E5600 e alcuni altri strumenti come l'utility QuickConnect e l'adattatore OCI.
+* *Off* -- impostazione richiesta per applicare la riservatezza nelle comunicazioni tra lo storage array e il client di gestione e per accedere a strumenti esterni. Impostazione consigliata per la configurazione di un server di directory (LDAP).
+
+
+.Fasi
+. Selezionare menu:Impostazioni[sistema].
+. Scorrere verso il basso fino a *Additional Settings* (Impostazioni aggiuntive), quindi fare clic su *Change Management Interface* (interfaccia di gestione delle modifiche).
+. Nella finestra di dialogo, fare clic su *Sì* per continuare.
+
